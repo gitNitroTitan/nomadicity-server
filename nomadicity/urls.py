@@ -13,9 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
+from nomadicityapi.views import check_user, register_user
+from django.conf.urls import include
+from rest_framework import routers
+from nomadicityapi.views import UserView
+
+router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'users', UserView, 'users')
+# router.register(r'posts', BoardView, 'boards')
+# router.register(r'categories', HikesView, 'hikes')
 
 urlpatterns = [
+    path('register', register_user),
+    path('checkuser', check_user),
     path('admin/', admin.site.urls),
+    path('', include(router.urls)),
 ]
