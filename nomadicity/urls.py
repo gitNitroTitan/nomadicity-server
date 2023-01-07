@@ -23,8 +23,8 @@ from nomadicityapi.views import UserView
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserView, 'users')
-# router.register(r'posts', BoardView, 'boards')
-# router.register(r'categories', HikesView, 'hikes')
+# router.register(r'boards', BoardView, 'board')
+# router.register(r'hikes', HikesView, 'hike')
 
 urlpatterns = [
     path('register', register_user),
@@ -32,3 +32,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(router.urls)),
 ]
+# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
