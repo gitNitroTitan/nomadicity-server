@@ -1,4 +1,4 @@
 from .user import User
-from .boards import Board
-from .hikes import Hike
+from .board import Board
+from .hike import Hike
 from .images import HikeImage

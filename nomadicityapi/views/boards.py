@@ -11,8 +11,8 @@ class BoardSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Board
-        fields = ('id', 'user', 'name',
-                'image_url','state', 'description', 'types')
+        fields = ('id', 'user', 'title',
+                'image_url', 'description')
         depth = 2
 
 
@@ -35,11 +35,9 @@ class BoardView(ViewSet):
         user = User.objects.get(uid=request.data["user"])
 
         board = Board.objects.create(
-            name=request.data["name"],
+            title=request.data["title"],
             image_url=request.data["image_url"],
-            state=request.data["state"],
             description=request.data["description"],
-            types=request.data["types"],
             user=user,
         )
         serializer = BoardSerializer(board)
@@ -48,11 +46,9 @@ class BoardView(ViewSet):
     def update(self, request, pk):
 
         board = Board.objects.get(pk=pk)
-        board.name=request.data["name"],
+        board.title=request.data["title"],
         board.image_url=request.data["image_url"],
-        board.state=request.data["state"],
         board.description=request.data["description"],
-        board.types=request.data["types"],
         hike = Hike.objects.get(pk=request.data["hike"])
         board.hike = hike
         board.save()
