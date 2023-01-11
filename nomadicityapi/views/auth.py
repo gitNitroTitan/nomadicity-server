@@ -44,7 +44,7 @@ def register_user(request):
       request -- The full HTTP request object
     '''
 
-    # Now save the user info in the rareapi_user table
+    # Now save the user info in the nomadicityapi_user table
     user = User.objects.create(
         uid=request.data['uid'],
         first_name=request.data['first_name'],

@@ -1,0 +1,50 @@
+  [
+  {
+    "model": "nomadicityapi.hike",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "name": "Djangolicious",
+      "latitude": 36.196167,
+      "longitude": -86.622498,
+      "date": "2022-09-07",
+      "description": "J. K. Rowlings Harry Potter series has gained immense ."
+    }
+  },
+  {
+    "model": "nomadicityapi.hike",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "name": "Meh",
+      "latitude": 36.196167,
+      "longitude": -86.622498,
+      "date": "2022-09-07",
+      "description": "The Navi return to the big screen this weekend Disney."
+    }
+  },
+  {
+    "model": "nomadicityapi.hike",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "name": "Sea stuff",
+      "latitude": 36.196167,
+      "longitude": -86.622498,
+      "date": "2022-09-07",
+      "description": "The orca or killer whale (Orcinus orca) is a toothed whale belonging to the oceanic ."
+    }
+  },
+  {
+    "model": "nomadicityapi.hike",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "name": "Pricks",
+      "latitude": 36.196167,
+      "longitude": -86.622498,
+      "date": "2022-09-07",
+      "description": "Cacti are a type of plant that is known for its thick, fleshy stem and its spines. These plants are native to the deserts of North and South America,."
+    }
+  }
+]

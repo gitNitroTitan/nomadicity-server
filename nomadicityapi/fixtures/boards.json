@@ -1,0 +1,42 @@
+[
+  {
+    "model": "nomadicityapi.board",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "title": "Amazing Wizards",
+      "image_url": "https://www.peterharrington.co.uk/blog/wp-content/uploads/2018/03/HP_4-scaled-e1656494430709.jpg",
+      "description": "J. K. Rowlings Harry Potter series has gained immense ."
+    }
+  },
+  {
+    "model": "nomadicityapi.board",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "title": "Blue Folks",
+      "image_url": "https://image.cnbcfm.com/api/v1/image/105897632-1557241558937avatar-e1541360922907.jpg?v=1664130328&w=630&h=354&ffmt=webp&vtcrop=y",
+      "description": "The Navi return to the big screen this weekend Disney."
+    }
+  },
+  {
+    "model": "nomadicityapi.board",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "title": "Sea Turds",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Killerwhales_jumping.jpg/220px-Killerwhales_jumping.jpg",
+      "description": "The orca or killer whale (Orcinus orca) is a toothed whale belonging to the oceanic ."
+    }
+  },
+  {
+    "model": "nomadicityapi.board",
+    "pk": 4,
+    "fields": {
+      "user": 1,
+      "title": "Pricks",
+      "image_url": "https://dsk4t6ov5vq8n.cloudfront.net/uploads/PBS-Articles/2022/The-Green-Planet/Episode-4-photos/Sized-photos/The_Green_Planet_04_029.jpg?mtime=20220629155429",
+      "description": "Cacti are a type of plant that is known for its thick, fleshy stem and its spines. These plants are native to the deserts of North and South America,."
+    }
+  }
+]
