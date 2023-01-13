@@ -10,7 +10,7 @@ class HikeSerializer(serializers.ModelSerializer):
   """JSON serializer for comments"""
   class Meta:
     model= Hike
-    fields = ( 'id', 'name', 'hike_location','date', 'description', 'completed')
+    fields = ( 'id', 'name','date', 'latitude', 'longitude', 'description')
     depth = 2
 
 class HikeView(ViewSet):
@@ -55,7 +55,7 @@ class HikeView(ViewSet):
         hike_location=request.data["hike_location"],
         date=request.data["date"],
         description = request.data["description"],
-        completed = request.data["completed"]
+        # completed = request.data["completed"]
       )
       serializer = HikeSerializer(hike)
       return Response(serializer.data)
@@ -72,7 +72,7 @@ class HikeView(ViewSet):
     hike.description = request.data["description"]
     hike.hike_location=request.data["hike_location"],
     hike.date=request.data["date"],
-    hike.completed = request.data["completed"]
+    # hike.completed = request.data["completed"]
     hike.board = board
 
     hike.save()
