@@ -8,10 +8,7 @@
             "last_name": "Chandler",
             "bio": "Sesame Street fanatic and lover of dancing",
             "profile_image_url": "https://www.cnet.com/a/img/resize/57eaabd3bdc223c89ca6e0450cb9280d148b488f/hub/2022/01/06/6fabb644-6304-4747-a7d9-deee2b8f43db/3000.jpg?auto=webp&fit=crop&height=1200&width=1200",
-            "email": "jechandler20@gmail.com",
-            "created_on": "2022-12-13",
-            "active": false,
-            "is_staff": true
+            "email": "jechandler20@gmail.com"
         }
     },
     {
@@ -23,10 +20,7 @@
             "last_name": "Chandler",
             "bio": "Dumpster to Diva, Ruler of all, Cat for the ages",
             "profile_image_url": "https://ih1.redbubble.net/image.993695643.4357/st,small,507x507-pad,600x600,f8f8f8.jpg",
-            "email": "kessel_rey@gmail.com",
-            "created_on": "2022-12-13",
-            "active": true,
-            "is_staff": true
+            "email": "kessel_rey@gmail.com"
         }
     }
 ]
