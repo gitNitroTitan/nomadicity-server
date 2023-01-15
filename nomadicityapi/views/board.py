@@ -35,7 +35,7 @@ class BoardView(ViewSet):
     def create(self, request):
         """Handle create requests for board
         """
-        user = User.objects.get(uid=request.data["user_id"])
+        user = User.objects.get(uid=request.data["user"])
 
         board = Board.objects.create(
                 title=request.data["title"],
