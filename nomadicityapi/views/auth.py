@@ -13,26 +13,23 @@ def check_user(request):
 
     # Use the built-in authenticate method to verify
     # authenticate returns the user object or None if no user is found
-    try:
 
-        user = User.objects.get(uid=uid)
+
+    user = User.objects.filter(uid=uid).first()
 
     # If authentication was successful, respond with their token
+    if user is not None:
         data = {
             'id': user.id,
-            'uid': user.uid,
+            'user': user.uid,
             'first_name': user.first_name,
             'last_name': user.last_name,
             'bio': user.bio,
             'profile_image_url': user.profile_image_url,
             'email': user.email,
-            'created_on': user.created_on,
-            'active': user.active,
-            'is_staff': user.is_staff
-
         }
         return Response(data)
-    except:
+    else:
         # Bad login details were provided. So we can't log the user in.
         data = { 'valid': False }
         return Response(data)
@@ -52,8 +49,6 @@ def register_user(request):
         bio=request.data['bio'],
         profile_image_url=request.data['profile_image_url'],
         email=request.data['email'],
-        created_on=request.data['created_on'],
-        active=request.data['active'],
     )
 
     # Return the user info to the client
@@ -65,7 +60,5 @@ def register_user(request):
         'bio': user.bio,
         'profile_image_url': user.profile_image_url,
         'email': user.email,
-        'created_on': user.created_on,
-        'active': user.active,
     }
     return Response(data)

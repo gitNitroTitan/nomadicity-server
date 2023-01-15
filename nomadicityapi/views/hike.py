@@ -46,11 +46,11 @@ class HikeView(ViewSet):
       Returns
           Response -- JSON serialized comment instance
       """
-      name = User.objects.get(uid = request.data["name"])
+      # user = User.objects.get(uid = request.data["uid"])
       board = Board.objects.get(pk = request.data["board"])
 
       hike = Hike.objects.create(
-        name = name,
+        name = request.data["name"],
         board = board,
         hike_location=request.data["hike_location"],
         date=request.data["date"],

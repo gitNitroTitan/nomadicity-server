@@ -22,7 +22,7 @@ from rest_framework import routers
 from nomadicityapi.views import UserView, BoardView, HikeView
 
 router = routers.DefaultRouter(trailing_slash=False)
-router.register(r'users', UserView, 'users')
+router.register(r'users', UserView, 'user')
 router.register(r'boards', BoardView, 'board')
 router.register(r'hikes', HikeView, 'hike')
 

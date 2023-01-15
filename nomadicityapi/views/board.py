@@ -35,10 +35,13 @@ class BoardView(ViewSet):
     def create(self, request):
         """Handle create requests for board
         """
+        user = User.objects.get(uid=request.data["user_id"])
+
         board = Board.objects.create(
                 title=request.data["title"],
                 image_url=request.data["image_url"],
                 description=request.data["description"],
+                user=user
             )
         serializer = BoardSerializer(board)
         return Response(serializer.data)
