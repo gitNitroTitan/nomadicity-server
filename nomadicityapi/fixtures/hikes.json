@@ -4,6 +4,7 @@
     "pk": 1,
     "fields": {
       "user": 1,
+      "board": 3,
       "name": "Djangolicious",
       "latitude": 36.196167,
       "longitude": -86.622498,
@@ -16,6 +17,7 @@
     "pk": 2,
     "fields": {
       "user": 1,
+      "board": 4,
       "name": "Meh",
       "latitude": 36.196167,
       "longitude": -86.622498,
@@ -28,6 +30,7 @@
     "pk": 3,
     "fields": {
       "user": 2,
+      "board": 3,
       "name": "Sea stuff",
       "latitude": 36.196167,
       "longitude": -86.622498,
@@ -40,6 +43,7 @@
     "pk": 4,
     "fields": {
       "user": 1,
+      "board": 1,
       "name": "Pricks",
       "latitude": 36.196167,
       "longitude": -86.622498,
