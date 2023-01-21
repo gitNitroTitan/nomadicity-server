@@ -11,7 +11,7 @@ class HikeSerializer(serializers.ModelSerializer):
   """JSON serializer for comments"""
   class Meta:
     model= Hike
-    fields = ( 'id', 'board', 'name', 'url', 'latitude', 'longitude', 'description')
+    fields = ( 'id', 'user', 'board', 'name', 'url', 'latitude', 'longitude', 'description')
     depth = 2
 
 class HikeView(ViewSet):
@@ -34,9 +34,6 @@ class HikeView(ViewSet):
       """
       hikes = Hike.objects.all()
 
-      # user = request.query_params.get('user', None)
-      # if user is not None:
-      #   hikes = hikes.filter(uid=user.uid)
       board = request.query_params.get('board', None)
       if board is not None:
         hikes = hikes.filter(board=board)
@@ -50,7 +47,7 @@ class HikeView(ViewSet):
       Returns
           Response -- JSON serialized comment instance
       """
-      # user = User.objects.get(pk = request.data["user"])
+      user = User.objects.get(pk = request.data["user"])
       board = Board.objects.get(pk = request.data["board"])
 
       hike = Hike.objects.create(
@@ -60,7 +57,7 @@ class HikeView(ViewSet):
           longitude = request.data["longitude"],
           description = request.data["description"],
           board = board,
-          # user = user
+          user = user
       )
       serializer = HikeSerializer(hike)
       return Response(serializer.data)
@@ -79,7 +76,6 @@ class HikeView(ViewSet):
     hike.longitude = request.data["longitude"]
     board = Board.objects.get(pk=request.data["board"])
     hike.board = board
-
     hike.save()
     return Response(None, status=status.HTTP_204_NO_CONTENT)
 
