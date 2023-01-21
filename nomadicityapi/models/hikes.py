@@ -5,7 +5,7 @@ from .boards import Board
 
 class Hike(models.Model):
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE)
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     url = models.URLField(max_length=200)

@@ -39,7 +39,7 @@ class HikeView(ViewSet):
       #   hikes = hikes.filter(uid=user.uid)
       board = request.query_params.get('board', None)
       if board is not None:
-        hikes = hikes.filter(board_id=board)
+        hikes = hikes.filter(board=board)
       serializer = HikeSerializer(hikes, many=True)
 
       return Response(serializer.data)
@@ -50,7 +50,7 @@ class HikeView(ViewSet):
       Returns
           Response -- JSON serialized comment instance
       """
-      user = User.objects.get(uid = request.data["user"])
+      # user = User.objects.get(pk = request.data["user"])
       board = Board.objects.get(pk = request.data["board"])
 
       hike = Hike.objects.create(
@@ -59,8 +59,8 @@ class HikeView(ViewSet):
           latitude = request.data["latitude"],
           longitude = request.data["longitude"],
           description = request.data["description"],
-          user = user,
-          board = board
+          board = board,
+          # user = user
       )
       serializer = HikeSerializer(hike)
       return Response(serializer.data)
