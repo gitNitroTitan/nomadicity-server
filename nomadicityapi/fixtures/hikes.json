@@ -6,9 +6,9 @@
       "user": 1,
       "board": 3,
       "name": "Djangolicious",
+      "url": "https://digitalsynopsis.com/wp-content/uploads/2017/12/funny-agency-life-creative-designer-copywriter-memes-1.jpg",
       "latitude": 36.196167,
       "longitude": -86.622498,
-      "date": "2022-09-07",
       "description": "J. K. Rowlings Harry Potter series has gained immense ."
     }
   },
@@ -19,9 +19,9 @@
       "user": 1,
       "board": 4,
       "name": "Meh",
+      "url": "https://i.natgeofe.com/k/baf4215e-517c-49b4-84f4-8e63cd5e5913/ww-funny-animal-faces-lemur_square.jpg",
       "latitude": 36.196167,
       "longitude": -86.622498,
-      "date": "2022-09-07",
       "description": "The Navi return to the big screen this weekend Disney."
     }
   },
@@ -29,12 +29,12 @@
     "model": "nomadicityapi.hike",
     "pk": 3,
     "fields": {
-      "user": 2,
+      "user": 1,
       "board": 3,
       "name": "Sea stuff",
+      "url": "https://cdn.ebaumsworld.com/mediaFiles/picture/2453506/85677236.png",
       "latitude": 36.196167,
       "longitude": -86.622498,
-      "date": "2022-09-07",
       "description": "The orca or killer whale (Orcinus orca) is a toothed whale belonging to the oceanic ."
     }
   },
@@ -45,9 +45,9 @@
       "user": 1,
       "board": 1,
       "name": "Pricks",
+      "url": "https://res.cloudinary.com/dthdp7zpl/image/upload/v1673886568/neg7psct60qrblepxqma.jpg",
       "latitude": 36.196167,
       "longitude": -86.622498,
-      "date": "2022-09-07",
       "description": "Cacti are a type of plant that is known for its thick, fleshy stem and its spines. These plants are native to the deserts of North and South America,."
     }
   }

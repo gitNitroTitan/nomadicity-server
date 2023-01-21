@@ -5,12 +5,13 @@ from rest_framework import serializers, status
 from nomadicityapi.models import Board, Hike, User
 from rest_framework.decorators import action
 from rest_framework import generics
+from django.shortcuts import get_object_or_404
 
 class HikeSerializer(serializers.ModelSerializer):
   """JSON serializer for comments"""
   class Meta:
     model= Hike
-    fields = ( 'id', 'user', 'board', 'name','date', 'latitude', 'longitude', 'description')
+    fields = ( 'id', 'board', 'name', 'url', 'latitude', 'longitude', 'description')
     depth = 2
 
 class HikeView(ViewSet):
@@ -33,9 +34,9 @@ class HikeView(ViewSet):
       """
       hikes = Hike.objects.all()
 
-      user = request.query_params.get('user', None)
-      if user is not None:
-        hikes = hikes.filter(uid=user.uid)
+      # user = request.query_params.get('user', None)
+      # if user is not None:
+      #   hikes = hikes.filter(uid=user.uid)
       board = request.query_params.get('board', None)
       if board is not None:
         hikes = hikes.filter(board_id=board)
@@ -49,17 +50,17 @@ class HikeView(ViewSet):
       Returns
           Response -- JSON serialized comment instance
       """
-      user = User.objects.get(uid = request.data["user_id"])
+      user = User.objects.get(uid = request.data["user"])
       board = Board.objects.get(pk = request.data["board"])
 
       hike = Hike.objects.create(
-        name = request.data["name"],
-        latitude = request.data["latitude"],
-        longitude = request.data["longitude"],
-        date=request.data["date"],
-        description = request.data["description"],
-        board = board,
-        user=user
+          name = request.data["name"],
+          url = request.data["url"],
+          latitude = request.data["latitude"],
+          longitude = request.data["longitude"],
+          description = request.data["description"],
+          user = user,
+          board = board
       )
       serializer = HikeSerializer(hike)
       return Response(serializer.data)
@@ -74,9 +75,9 @@ class HikeView(ViewSet):
 
     hike = Hike.objects.get(pk=pk)
     hike.description = request.data["description"]
-    hike.hike_location=request.data["hike_location"],
-    hike.date=request.data["date"],
-    # hike.completed = request.data["completed"]
+    hike.latitude = request.data["latitude"]
+    hike.longitude = request.data["longitude"]
+    board = Board.objects.get(pk=request.data["board"])
     hike.board = board
 
     hike.save()
@@ -87,9 +88,3 @@ class HikeView(ViewSet):
     hike.delete()
 
     return Response(None, status=status.HTTP_204_NO_CONTENT)
-
-class BoardHikesView(generics.ListCreateAPIView):
-  serializer_class = HikeSerializer
-  def get_queryset(self):
-    board_id = self.kwargs['board_id']
-    return Hike.objects.filter(board__id=board_id)
