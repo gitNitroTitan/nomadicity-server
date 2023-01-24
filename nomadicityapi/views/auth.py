@@ -1,6 +1,7 @@
 from nomadicityapi.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from nomadicityapi.serializers import UserSerializer
 
 @api_view(['POST'])
 def check_user(request):
@@ -18,20 +19,29 @@ def check_user(request):
     user = User.objects.filter(uid=uid).first()
 
     # If authentication was successful, respond with their token
-    if user is not None:
-        data = {
-            'id': user.id,
-            'user': user.uid,
-            'first_name': user.first_name,
-            'last_name': user.last_name,
-            'bio': user.bio,
-            'profile_image_url': user.profile_image_url,
-            'email': user.email,
-        }
-        return Response(data)
-    else:
-        # Bad login details were provided. So we can't log the user in.
-        data = { 'valid': False }
+    # if user is not None:
+    #     data = {
+    #         'id': user.id,
+    #         'user': user.uid,
+    #         'first_name': user.first_name,
+    #         'last_name': user.last_name,
+    #         'bio': user.bio,
+    #         'profile_image_url': user.profile_image_url,
+    #         'email': user.email,
+    #     }
+    #     return Response(data)
+    # else:
+    #     # Bad login details were provided. So we can't log the user in.
+    #     data = { 'valid': False }
+    #     return Response(data)
+
+    try:
+        user = User.objects.get(uid=uid)
+
+        serializers = UserSerializer(user)
+        return Response(serializers.data)
+    except:
+        data = { 'valid':False }
         return Response(data)
 
 @api_view(['POST'])

@@ -3,6 +3,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from nomadicityapi.models import User
+from nomadicityapi.serializers import UserSerializer
+# from nomadicityapi.views import HikeSerializer
 
 class UserView(ViewSet):
     def retrieve(self, request, pk):
@@ -58,9 +60,3 @@ class UserView(ViewSet):
         user = User.objects.get(pk=pk)
         user.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-
-class UserSerializer(serializers.ModelSerializer):
-    """"JSON serializer for users"""
-    class Meta:
-        model = User
-        fields = ('id', 'uid', 'first_name', 'last_name', 'bio', 'profile_image_url', 'email')

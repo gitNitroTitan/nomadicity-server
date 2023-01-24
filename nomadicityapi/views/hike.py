@@ -5,14 +5,9 @@ from rest_framework import serializers, status
 from nomadicityapi.models import Board, Hike, User
 from rest_framework.decorators import action
 from rest_framework import generics
+from nomadicityapi.serializers import HikeSerializer
 from django.shortcuts import get_object_or_404
 
-class HikeSerializer(serializers.ModelSerializer):
-  """JSON serializer for comments"""
-  class Meta:
-    model= Hike
-    fields = ( 'id', 'user', 'board', 'name', 'url', 'latitude', 'longitude', 'description')
-    depth = 2
 
 class HikeView(ViewSet):
   """ Nomadicity Hikes view"""
@@ -47,7 +42,7 @@ class HikeView(ViewSet):
       Returns
           Response -- JSON serialized comment instance
       """
-      user = User.objects.get(pk = request.data["user"])
+      user = User.objects.get(uid = request.data["user"])
       board = Board.objects.get(pk = request.data["board"])
 
       hike = Hike.objects.create(
