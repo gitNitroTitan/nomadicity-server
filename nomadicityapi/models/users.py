@@ -1,4 +1,3 @@
-import datetime
 from django.db import models
 
 class User(models.Model):
@@ -8,6 +7,13 @@ class User(models.Model):
     bio = models.CharField(max_length=1000)
     profile_image_url = models.URLField(max_length=200)
     email = models.EmailField(max_length=254)
+
+    @property
+    def hikes(self):
+        """user hikes"""
+        hikes = [hike for hike in self.user_hike.all()]
+        return hikes
+
 
     def __str__(self):
         return self.first_name + self.last_name

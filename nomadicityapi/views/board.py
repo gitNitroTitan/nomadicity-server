@@ -3,18 +3,8 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from nomadicityapi.models import Board, Hike, User
+from nomadicityapi.serializers import BoardSerializer
 from rest_framework.decorators import action
-
-
-class BoardSerializer(serializers.ModelSerializer):
-    """JSON serializer for posts
-    """
-    class Meta:
-        model = Board
-        fields = ('id', 'title',
-                'image_url', 'description')
-        depth = 2
-
 
 class BoardView(ViewSet):
 
