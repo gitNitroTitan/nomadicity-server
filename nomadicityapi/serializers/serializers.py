@@ -8,19 +8,19 @@ class HikeSerializer(ModelSerializer):
     fields = ( 'id', 'user', 'board', 'name', 'url', 'latitude', 'longitude', 'description')
     depth = 2
 
-class UserSerializer(ModelSerializer):
-    """"JSON serializer for users"""
-    hikes= HikeSerializer(many=True)
-
-    class Meta:
-        model = User
-        fields = ('id', 'uid', 'first_name', 'last_name', 'bio', 'profile_image_url', 'email', 'hikes')
-
 class BoardSerializer(ModelSerializer):
     """JSON serializer for boards
     """
     class Meta:
         model = Board
-        fields = ('id', 'title',
+        fields = ('id', 'user', 'title',
                 'image_url', 'description')
         depth = 2
+class UserSerializer(ModelSerializer):
+    """"JSON serializer for users"""
+    boards= BoardSerializer(many=True)
+    hikes= HikeSerializer(many=True)
+
+    class Meta:
+        model = User
+        fields = ('id', 'uid', 'first_name', 'last_name', 'bio', 'profile_image_url', 'email', 'hikes', 'boards')

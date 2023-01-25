@@ -14,6 +14,12 @@ class User(models.Model):
         hikes = [hike for hike in self.user_hike.all()]
         return hikes
 
+    @property
+    def boards(self):
+        """user hikes"""
+        boards = [board for board in self.user_board.all()]
+        return boards
+
 
     def __str__(self):
         return self.first_name + self.last_name

@@ -15,9 +15,7 @@ class BoardView(ViewSet):
 
     def list(self, request):
         boards = Board.objects.all()
-        # user = request.query_params.get('user', None)
-        # if user is not None:
-        #     boards = boards.filter(uid=user.uid)
+
         serializer = BoardSerializer(boards, many=True)
         return Response(serializer.data)
 
@@ -25,13 +23,13 @@ class BoardView(ViewSet):
     def create(self, request):
         """Handle create requests for board
         """
-        # user = User.objects.get(uid=request.data["user_id"])
+        user = User.objects.get(uid=request.data["user"])
 
         board = Board.objects.create(
                 title=request.data["title"],
                 image_url=request.data["image_url"],
-                description=request.data["description"]
-                # user=user
+                description=request.data["description"],
+                user=user
             )
         serializer = BoardSerializer(board)
         return Response(serializer.data)
@@ -42,8 +40,6 @@ class BoardView(ViewSet):
         board.title=request.data["title"]
         board.image_url=request.data["image_url"]
         board.description=request.data["description"]
-        # hike = Hike.objects.get(pk=request.data["hike"])
-        # board.hike = hike
         board.save()
 
         return Response(None, status=status.HTTP_204_NO_CONTENT)
